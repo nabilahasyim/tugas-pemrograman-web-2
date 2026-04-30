@@ -16,7 +16,7 @@
                 <th>Jurusan</th>
                 <th>Semester</th>
                 <th>Email</th>
-                <th width="180">Aksi</th>
+                <th width="200">Aksi</th>
             </tr>
         </thead>
 
@@ -24,6 +24,7 @@
 
             @foreach ($mahasiswa as $mhs)
                 <tr>
+
                     <td>{{ $mhs->nama }}</td>
                     <td>{{ $mhs->nim }}</td>
                     <td>{{ $mhs->jurusan }}</td>
@@ -32,22 +33,26 @@
 
                     <td>
 
+                        <!-- BUTTON EDIT -->
                         <a href="/mahasiswa/{{ $mhs->id }}/edit" class="btn btn-warning btn-sm">
                             Edit
                         </a>
 
-                        <form action="/mahasiswa/{{ $mhs->id }}" method="POST" class="d-inline">
+                        <!-- BUTTON DELETE -->
+                        <form action="/mahasiswa/{{ $mhs->id }}" method="POST" class="d-inline"
+                            onsubmit="return confirm('Yakin ingin menghapus data ini?')">
 
                             @csrf
                             @method('DELETE')
 
-                            <button class="btn btn-danger btn-sm">
+                            <button type="submit" class="btn btn-danger btn-sm">
                                 Hapus
                             </button>
 
                         </form>
 
                     </td>
+
                 </tr>
             @endforeach
 

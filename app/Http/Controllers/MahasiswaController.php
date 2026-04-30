@@ -67,5 +67,12 @@ class MahasiswaController extends Controller
             ->with('success', 'Data berhasil diubah');
     }
 
+     // DELETE
+    public function destroy(Mahasiswa $mahasiswa)
+    {
+        $mahasiswa->delete();
 
+        return redirect('/mahasiswa')
+            ->with('success', 'Data berhasil dihapus');
+    }
 }
